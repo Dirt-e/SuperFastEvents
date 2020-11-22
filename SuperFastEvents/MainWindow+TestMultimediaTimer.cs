@@ -25,8 +25,8 @@ namespace SuperFastEvents
             stopWatch = Stopwatch.StartNew();
 
             multimediaTimerID = timeSetEvent(
-                10,
-                2,
+                1,
+                0,
                 new TimerEventHandler(TimerCallbackMethod),
                 ref userCtx,
                 1);

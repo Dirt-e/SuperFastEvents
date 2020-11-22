@@ -10,6 +10,7 @@ namespace SuperFastEvents
         private BackgroundWorker backgroundThread = new BackgroundWorker();
         private bool shouldStopCalls;
 
+
         private void TestSuccessiveCalls()
         {
             shouldStopCalls = false;
@@ -18,8 +19,8 @@ namespace SuperFastEvents
             {
                 while (!shouldStopCalls)
                 {
-                    Thread.Sleep(1);
-                    //PseudoDelay();
+                    // Thread.Sleep(1);
+                    PseudoDelay();
 
                     OnEventFired();
 
