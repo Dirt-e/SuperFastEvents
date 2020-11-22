@@ -18,7 +18,7 @@ namespace SuperFastEvents.Model
 
         public void MakeTheSecondClassDoSomething()
         {
-            //Call a function on the "otherclass" object by accessing it through "mainwindow":
+            //Call a function on the "mysecondclass" object by accessing it through "mainwindow":
             mainwindow.mysecondclass.DoSomething();
         }
     }
