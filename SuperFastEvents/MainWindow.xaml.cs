@@ -44,12 +44,12 @@ namespace SuperFastEvents
             {
                 while (true)
                 {
-                    Thread.Sleep(1);
-
                     BusinessCycle();
                     UpdateViewmodel();
 
                     if (backgroundworker.CancellationPending) break;
+
+                    Thread.Sleep(1);
                 }
             };
             backgroundworker.RunWorkerAsync();
@@ -67,12 +67,15 @@ namespace SuperFastEvents
         {
             byte[] bytes = Encoding.ASCII.GetBytes(viewmodel.Message);
             UDP_Client.Send(bytes, bytes.Length, ToIP, ToPort);
+            myfirstclass.MakeTheSecondClassDoSomething();
         }
         private void UpdateViewmodel()
-        {
+        {   
+            viewmodel.Response = "I have send: " + viewmodel.Message;
+            
             Application.Current?.Dispatcher.Invoke(new Action(() =>
             {
-                viewmodel.Response = "I have send: " + viewmodel.Message;
+                //Change Dependency Properties here
             }));
 
         }
