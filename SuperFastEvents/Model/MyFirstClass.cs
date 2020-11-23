@@ -7,22 +7,21 @@ using System.Windows;
 
 namespace SuperFastEvents.Model
 {
-    public class MyFirstClass
+    public class MyFirstClass : MyObject
     {
+        public MyFirstClass(_Model model)
+        {
+            Model = model;
+        }
+
         public void DoSomething()
         {
-            //Do something here
+            
         }
 
         public void MakeTheSecondClassDoSomething()
         {
-            //Call a function on the "mysecondclass" object by accessing it through "mainwindow":
-            Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().mysecondclass.DoSomething();
-            /*PROBLEM:
-            myfirstclass and mysecondclass both live inside Mainwindow and can only be accessed through mainwindow.
-            However, the Mainwindow is running on the UI thread and can therfore not be reached from the BackgroundWorker
-            because it would be a cross-thread operation.
-            */
+            Model.mysecondclass.DoSomething();
         }
     }
 }

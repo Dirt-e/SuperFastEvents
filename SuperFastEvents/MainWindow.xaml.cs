@@ -15,12 +15,13 @@ namespace SuperFastEvents
     public partial class MainWindow : Window
     {
         private MainWindow_ViewModel viewmodel = new MainWindow_ViewModel();
-        private UdpClient UDP_Client;
-        private BackgroundWorker backgroundworker;
+        private BackgroundWorker backgroundworker= new BackgroundWorker
+            {
+                WorkerSupportsCancellation = true
+            };
+        private _Model Model = new _Model();
 
-        public MyFirstClass myfirstclass = new MyFirstClass();
-        public MySecondClass mysecondclass = new MySecondClass();
-        
+        private UdpClient UDP_Client;
         private int FromPort = 9999;
         private int ToPort = 10000;
         private string ToIP = "127.0.0.1";
@@ -30,8 +31,11 @@ namespace SuperFastEvents
             InitializeComponent();
             DataContext = viewmodel;
 
-            backgroundworker = new BackgroundWorker();
-            backgroundworker.WorkerSupportsCancellation = true;
+            backgroundworker = new BackgroundWorker
+            {
+                WorkerSupportsCancellation = true
+            };
+            
 
             UDP_Client = new UdpClient(FromPort);
         }
@@ -60,18 +64,18 @@ namespace SuperFastEvents
             {
                 backgroundworker.CancelAsync();
             }
-
         }
 
         private void BusinessCycle()
         {
             byte[] bytes = Encoding.ASCII.GetBytes(viewmodel.Message);
             UDP_Client.Send(bytes, bytes.Length, ToIP, ToPort);
-            //myfirstclass.MakeTheSecondClassDoSomething();
+            Model.myfirstclass.MakeTheSecondClassDoSomething();
+            Model.mysecondclass.MakeTheFirstClassDoSomething();
         }
         private void UpdateViewmodel()
         {   
-            viewmodel.Response = "I have send: " + viewmodel.Message;
+            viewmodel.Response = "I have sent: " + viewmodel.Message;
             
             Application.Current?.Dispatcher.Invoke(new Action(() =>
             {
