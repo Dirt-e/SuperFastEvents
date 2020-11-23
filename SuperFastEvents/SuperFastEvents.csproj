@@ -70,9 +70,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModel\_MyViewModel.cs" />
     <Compile Include="Model\MyFirstClass.cs" />
     <Compile Include="Model\MySecondClass.cs" />
-    <Compile Include="ViewModels\MainWindow_ViewModel.cs" />
+    <Compile Include="ViewModel\MainWindow_ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

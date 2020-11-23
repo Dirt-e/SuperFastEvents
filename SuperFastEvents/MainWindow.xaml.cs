@@ -67,7 +67,7 @@ namespace SuperFastEvents
         {
             byte[] bytes = Encoding.ASCII.GetBytes(viewmodel.Message);
             UDP_Client.Send(bytes, bytes.Length, ToIP, ToPort);
-            myfirstclass.MakeTheSecondClassDoSomething();
+            //myfirstclass.MakeTheSecondClassDoSomething();
         }
         private void UpdateViewmodel()
         {   

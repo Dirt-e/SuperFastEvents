@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
+﻿using SuperFastEvents.ViewModel;
+using System.ComponentModel;
 using System.Windows;
 
 namespace SuperFastEvents
 {
-    public class MainWindow_ViewModel : INotifyPropertyChanged
+    public class MainWindow_ViewModel : MyViewmodel
     {
         string _message = "";
         public string Message
@@ -29,13 +30,6 @@ namespace SuperFastEvents
         {
             get { return _btn_stop_enabled; }
             set { _btn_stop_enabled = value; OnPropertyChanged("Button_Stop_Enabled"); }
-        }
-
-        //INotifyPropertyChanged:
-        public event PropertyChangedEventHandler PropertyChanged;
-        private protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
