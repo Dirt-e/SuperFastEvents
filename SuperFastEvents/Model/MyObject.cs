@@ -8,6 +8,6 @@ namespace SuperFastEvents.Model
 {
     public class MyObject
     {
-        public _Model Model;
+        public Model Model;
     }
 }

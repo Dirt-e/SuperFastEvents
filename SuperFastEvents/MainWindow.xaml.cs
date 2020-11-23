@@ -14,12 +14,11 @@ namespace SuperFastEvents
 {
     public partial class MainWindow : Window
     {
-        private MainWindow_ViewModel viewmodel = new MainWindow_ViewModel();
         private BackgroundWorker backgroundworker= new BackgroundWorker
             {
                 WorkerSupportsCancellation = true
             };
-        private _Model Model = new _Model();
+        private Model.Model Model = new Model.Model(); 
 
         private UdpClient UDP_Client;
         private int FromPort = 9999;
@@ -29,7 +28,7 @@ namespace SuperFastEvents
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = viewmodel;
+            DataContext = Model.mainwindow_viewmodel;
 
             backgroundworker = new BackgroundWorker
             {
@@ -68,14 +67,14 @@ namespace SuperFastEvents
 
         private void BusinessCycle()
         {
-            byte[] bytes = Encoding.ASCII.GetBytes(viewmodel.Message);
+            byte[] bytes = Encoding.ASCII.GetBytes(Model.mainwindow_viewmodel.Message);
             UDP_Client.Send(bytes, bytes.Length, ToIP, ToPort);
             Model.myfirstclass.MakeTheSecondClassDoSomething();
             Model.mysecondclass.MakeTheFirstClassDoSomething();
         }
         private void UpdateViewmodel()
         {   
-            viewmodel.Response = "I have sent: " + viewmodel.Message;
+            Model.mainwindow_viewmodel.Response = "I have sent: " + Model.mainwindow_viewmodel.Message;
             
             Application.Current?.Dispatcher.Invoke(new Action(() =>
             {
@@ -86,14 +85,14 @@ namespace SuperFastEvents
 
         private void Button_Send_Click(object sender, RoutedEventArgs e)
         {
-            viewmodel.Button_Send_Enabled = false;
-            viewmodel.Button_Stop_Enabled = true;
+            Model.mainwindow_viewmodel.Button_Send_Enabled = false;
+            Model.mainwindow_viewmodel.Button_Stop_Enabled = true;
             StartBackgroundWorker();
         }
         private void Button_Stop_Click(object sender, RoutedEventArgs e)
         {
-            viewmodel.Button_Send_Enabled = true;
-            viewmodel.Button_Stop_Enabled = false;
+            Model.mainwindow_viewmodel.Button_Send_Enabled = true;
+            Model.mainwindow_viewmodel.Button_Stop_Enabled = false;
             StopBackgroundWorker();
         }
 

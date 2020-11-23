@@ -71,8 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\MyObject.cs" />
-    <Compile Include="Model\_Model.cs" />
-    <Compile Include="ViewModel\_MyViewModel.cs" />
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="ViewModel\MyViewModel.cs" />
     <Compile Include="Model\MyFirstClass.cs" />
     <Compile Include="Model\MySecondClass.cs" />
     <Compile Include="ViewModel\MainWindow_ViewModel.cs" />

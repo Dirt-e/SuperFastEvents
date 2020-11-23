@@ -9,7 +9,7 @@ namespace SuperFastEvents.Model
 {
     public class MySecondClass : MyObject
     {
-        public MySecondClass(_Model model)
+        public MySecondClass(Model model)
         {
             Model = model;
         }
