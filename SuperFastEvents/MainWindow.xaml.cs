@@ -22,7 +22,7 @@ namespace SuperFastEvents
 
         private UdpClient UDP_Client;
         private int FromPort = 9999;
-        private int ToPort = 10000;
+        private int ToPort = 31090;
         private string ToIP = "127.0.0.1";
 
         public MainWindow()
@@ -52,7 +52,7 @@ namespace SuperFastEvents
 
                     if (backgroundworker.CancellationPending) break;
 
-                    Thread.Sleep(1);
+                    Thread.Sleep(4);
                 }
             };
             backgroundworker.RunWorkerAsync();
